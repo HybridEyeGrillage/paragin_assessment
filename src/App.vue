@@ -26,17 +26,34 @@ const settings = [
     label: "Previous correction rounds must be completed before this one can start",
     options: ['No', 'Yes']
   },
+  {
+    id: 4,
+    name: 'canEditScoreAndFeedback',
+    label: "After checking, the score and feedback can be edited",
+    options: ['No', 'Yes']
+  },
+  {
+    id: 5,
+    name: 'updateResultAndGradeBasedOnCurrentCorrectionRound',
+    label: "The result and grade will be updated based on this correction round",
+    options: ['No', 'Yes']
+  },
 ];
 
+// TODO : Make slider component that for number of days
+const slider = {
+  name: 'setTheNumberOfReviewDaysAfterSubmission',
+  label: "Deadline, the number of days within which the result has to be checked after submission",
+  value: 14
+};
 const correctorType = ref(false);
 
-// Better to move to a composable that can set the notification type/message from any location
+// TODO: move to a composable that can set the notification type/message from any location
 const notificationText = "Please select a corrector From the list below in order to assign your correction distibution."
 
 </script>
 
 <template>
-  <!-- Correction Round Container -->
   <LayoutContainer>
     <template #heading>
       <div class="flex justify-between bg-green-700 p-2 items-center">
@@ -45,18 +62,16 @@ const notificationText = "Please select a corrector From the list below in order
       </div>
     </template>
     <div class="flex flex-col gap-3 w-full h-full px-3">
-      <!-- Correction Round settings -->
       <SettingContainer>
         <template #header>Correction round settings</template>
+        <!-- TODO: Move to CorrectionRoundSettings and use that here -->
         <div v-for="setting in  settings" :key="setting.id">
           <HorizontalRadioGroup :label="setting.label" :name="setting.name" :options="setting.options" v-model="value"
             :value="value" />
         </div>
       </SettingContainer>
-      <!-- Correction distribution -->
       <SettingContainer>
         <template #header>Correction distribution</template>
-        <!-- Toggle -->
         <div class="flex flex-col gap-4">
           <span class="text-sm">Corrections should be assigned to:</span>
           <ToggleSwitch :options="['One corrector', 'Assign to me']" v-model="correctorType" />
@@ -67,25 +82,7 @@ const notificationText = "Please select a corrector From the list below in order
           </Notification>
         </div>
         <CorrectionDistrubtionList />
-
       </SettingContainer>
     </div>
   </LayoutContainer>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

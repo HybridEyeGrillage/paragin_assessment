@@ -4,13 +4,13 @@
       <span>All correctors</span>
       <div class="w-full h-0 border border-gray-600">&nbsp;</div>
       <div class="grid py-2">
-        <!-- Turn into a component so that it is reusable and reactive to the selected corrector -->
         <div class="grid grid-cols-4">
           <span class="font-bold text-sm">Name</span>
           <span class="font-bold text-sm">Role</span>
           <span class="font-bold text-sm">Group</span>
         </div>
         <div class="flex flex-col gap-4">
+          <!-- Turn into a component so that it is reusable and reactive to the selected corrector -->
           <div class="grid grid-cols-4 items-center">
             <span class="text-sm">Van den Endelagen, C</span>
             <span class="text-sm">Test Coordinator</span>
