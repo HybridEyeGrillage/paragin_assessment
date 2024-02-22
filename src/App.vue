@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import LayoutContainer from './layouts/LayoutContainer.vue';
 import SettingContainer from './components/SettingContainer.vue';
 import HorizontalRadioGroup from './components/HorizontalRadioGroup.vue';
-import CorrectionDistrubtionList from './components/CorrectionRound/CorrectionDistrubtionList.vue';
+import CorrectionDistributionList from './components/CorrectionRound/CorrectionDistributionList.vue';
 import ToggleSwitch from './components/ToggleSwitch.vue';
 import Notification from './components/Notification.vue';
 
@@ -49,7 +49,7 @@ const slider = {
 const correctorType = ref(false);
 
 // TODO: move to a composable that can set the notification type/message from any location
-const notificationText = "Please select a corrector From the list below in order to assign your correction distibution."
+const notificationText = "Please select a corrector From the list below in order to assign your correction distribution."
 
 </script>
 
@@ -66,8 +66,7 @@ const notificationText = "Please select a corrector From the list below in order
         <template #header>Correction round settings</template>
         <!-- TODO: Move to CorrectionRoundSettings and use that here -->
         <div v-for="setting in  settings" :key="setting.id">
-          <HorizontalRadioGroup :label="setting.label" :name="setting.name" :options="setting.options" v-model="value"
-            :value="value" />
+          <HorizontalRadioGroup :label="setting.label" :name="setting.name" :options="setting.options" v-model="value" />
         </div>
       </SettingContainer>
       <SettingContainer>
@@ -81,7 +80,7 @@ const notificationText = "Please select a corrector From the list below in order
             {{ notificationText }}
           </Notification>
         </div>
-        <CorrectionDistrubtionList />
+        <CorrectionDistributionList />
       </SettingContainer>
     </div>
   </LayoutContainer>
