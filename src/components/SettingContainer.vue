@@ -3,7 +3,7 @@
     <span class="text-md">
       <slot name="header" />
     </span>
-    <section clas="flex flex-col gap-4">
+    <section class="flex flex-col gap-4">
       <slot />
     </section>
   </div>

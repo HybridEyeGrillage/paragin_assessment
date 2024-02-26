@@ -1,13 +1,12 @@
 <template>
-  <div v-for="setting in  settings" :key="setting.id">
-    <HorizontalRadioGroup :label="setting.label" :name="setting.name" :options="setting.options" v-model="value"
-      :value="value" />
+  <div v-for="setting in settings" :key="setting.id">
+    <RadioGroup :label="setting.label" :options="setting.options" :name="setting.name" v-model="setting.value"
+      :value="setting.value" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import HorizontalRadioGroup from '../HorizontalRadioGroup.vue';
+import RadioGroup from '../RadioGroup.vue';
 
 defineProps({
   settings: {
@@ -15,5 +14,4 @@ defineProps({
     required: true
   }
 });
-const value = ref(false);
 </script>
